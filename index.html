@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estatuto Tarifas 2026 - Electro Service S.A.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .bg-brand { background-color: #a50034; }
+        .text-brand { color: #a50034; }
+        .tab-active { border-bottom: 4px solid #a50034; color: #a50034; font-weight: 800; }
+        .table-container { overflow-x: auto; border-radius: 12px; }
+        .table-header { background-color: #1e293b; color: white; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.05em; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-1000 antialiased pb-20">
+
+    <header class="bg-brand text-white py-8 px-6 text-center shadow-lg">
+        <h1 class="text-2xl font-black uppercase tracking-tighter">Electro Service S.A.</h1>
+        <p class="text-sm font-light opacity-80 uppercase tracking-widest mt-1">Estatuto Tarifas 2026</p>
+    </header>
+
+    <nav class="bg-white border-b border-slate-300 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-5xl mx-auto flex">
+            <button onclick="switchTab('garantias')" id="btn-garantias" class="flex-1 py-4 text-sm font-bold uppercase tracking-tight tab-active transition-all">
+                Garantías
+            </button>
+            <button onclick="switchTab('oow')" id="btn-oow" class="flex-1 py-4 text-sm font-bold uppercase tracking-tight text-slate-400 transition-all">
+                Fuera de Garantía (OOW)
+            </button>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-4 mt-8">
+
+        <div id="tab-garantias" class="space-y-12">
+            
+            <section class="bg-amber-50 border-2 border-amber-200 rounded-2xl p-6">
+                <h2 class="text-amber-800 font-black text-sm uppercase mb-3 flex items-center italic">
+                    ⚠️ Requisitos para Tarifa Tipo A
+                </h2>
+                <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 text-sm text-amber-900">
+                    <li>• Confirmar ruta antes de las <b>9:00 a.m.</b></li>
+                    <li>• Envío de datos (Modelo, serie, factura) vía WhatsApp en línea.</li>
+                    <li>• Cargar imágenes en linea en <b>SAMM</b> con marca de agua.</li>
+                    <li>• Reportar novedades de la ruta en tiempo real.</li>
+                    <li>• Completar módulos en <b>EDX Learning</b> y uso de <b>CSportal</b>.</li>
+                </ul>
+            </section>
+
+            <section>
+                <div class="flex items-center gap-4 mb-6">
+                    <span class="bg-green-600 text-white text-xs font-black px-3 py-1 rounded-md">TARIFA A</span>
+                    <h2 class="text-2xl font-black text-slate-800 uppercase tracking-tighter">Excelencia y Cumplimiento</h2>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div class="lg:col-span-2">
+                        <h3 class="text-sm font-black text-slate-800 mb-3 uppercase tracking-widest text-center">Línea Marrón</h3>
+                        <div class="table-container bg-white border border-slate-300 shadow-sm">
+                            <table class="w-full text-left text-xs">
+                                <thead class="table-header">
+                                    <tr>
+                                        <th class="px-4 py-3 text-center">Tipo Servicio</th>
+                                        <th class="px-2 py-3 text-center">≤ 50"</th>
+                                        <th class="px-2 py-3 text-center">> 50"</th>
+                                        <th class="px-2 py-3 text-center">≥ 70"</th>
+                                        <th class="px-2 py-3 text-center">Horno/Audio</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-100">
+                                    <tr><td class="px-4 py-2 font-semibold">Ajuste sin parte</td><td class="text-center">$22,000</td><td class="text-center">$29,000</td><td class="text-center">$32,000</td><td class="text-center">$10,000</td></tr>
+                                    <tr><td class="px-4 py-2 font-semibold">Cambio de producto</td><td class="text-center">$20,000</td><td class="text-center">$25,000</td><td class="text-center">$30,000</td><td class="text-center">$10,000</td></tr>
+                                    <tr><td class="px-4 py-2 font-semibold">Cambio de partes</td><td class="text-center">$22,000</td><td class="text-center">$29,000</td><td class="text-center">$32,000</td><td class="text-center">$10,000</td></tr>
+                                    <tr><td class="px-4 py-2 font-semibold">No Falla</td><td class="text-center">$17,000</td><td class="text-center">$17,000</td><td class="text-center">$17,000</td><td class="text-center">$10,000</td></tr>
+                                    <tr><td class="px-4 py-2 font-semibold">Cambio de Display</td><td class="text-center">$35,000</td><td class="text-center">$50,000</td><td class="text-center">$60,000</td><td class="text-center">-</td></tr>
+                                    <tr><td class="px-4 py-2 font-semibold">Diagnóstico Display</td><td class="text-center">$19,000</td><td class="text-center">$25,000</td><td class="text-center">$30,000</td><td class="text-center">-</td></tr>
+                                    <tr><td class="px-4 py-2 font-semibold">Actualización Software</td><td class="text-center">$20,000</td><td class="text-center">$20,000</td><td class="text-center">$20,000</td><td class="text-center">-</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-black text-slate-800 mb-3 uppercase tracking-widest text-center">Línea Blanca</h3>
+                        <div class="table-container bg-white border border-slate-300 shadow-sm">
+                            <table class="w-full text-left text-xs">
+                                <thead class="table-header">
+                                    <tr><th class="px-4 py-3 text-center">Tipo Servicio</th><th class="px-4 py-3 text-center">Valor</th></tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-100">
+                                    <tr><td class="px-4 py-2 font-semibold text-center">Ajuste sin parte</td><td class="px-4 py-2 text-center">$25,000</td></tr>
+                                    <tr><td class="px-4 py-2 font-semibold text-center">Cambio de producto</td><td class="px-4 py-2 text-center">$20,000</td></tr>
+                                    <tr><td class="px-4 py-2 font-semibold text-center">Cambio de partes</td><td class="px-4 py-2 text-center">$25,000</td></tr>
+                                    <tr><td class="px-4 py-2 font-semibold text-center">No Falla</td><td class="px-4 py-2 text-center">$17,000</td></tr>
+                                    <tr><td class="px-4 py-2 font-semibold text-center">Lavado 2 horas</td><td class="px-4 py-2 text-center">$30,000</td></tr>
+                                    <tr><td class="px-4 py-2 font-semibold text-center">Tina y Araña</td><td class="px-4 py-2 text-center">$35,000</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="opacity-90">
+                <div class="flex items-center gap-4 mb-6">
+                    <span class="bg-red-700 text-white text-xs font-black px-3 py-1 rounded-md">TARIFA B</span>
+                    <h2 class="text-2xl font-black text-slate-800 uppercase tracking-tighter">Incumplimiento de Flujo</h2>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div class="lg:col-span-2">
+                        <h3 class="text-sm font-black text-slate-800 mb-3 uppercase tracking-widest text-center">Línea Marrón</h3>
+                        <div class="table-container bg-white border border-slate-300 shadow-sm">
+                            <table class="w-full text-left text-xs">
+                                <thead class="table-header">
+                                    <tr>
+                                        <th class="px-4 py-2 font-semibold text-center">Tipo de Servicio</th>
+                                        <th class="px-4 py-2 font-semibold text-center">≤ 50"</th>
+                                        <th class="px-4 py-2 font-semibold text-center">> 50"</th>
+                                        <th class="px-4 py-2 font-semibold text-center">≥ 70"</th>
+                                        <th class="px-4 py-2 font-semibold text-center">Horno/Audio</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-100">
+                                    <tr><td class="px-4 py-2 font-semibold text-center">Ajuste sin parte</td><td class="text-center">$20,000</td><td class="text-center font-bold">$25,000</td><td class="text-center">$30,000</td><td class="text-center">$8,000</td></tr>
+                                    <tr><td class="px-4 py-2 font-semibold text-center">Cambio producto</td><td class="text-center">$14,000</td><td class="text-center">$16,000</td><td class="text-center">$17,000</td><td class="text-center">$8,000</td></tr>
+                                    <tr><td class="px-4 py-2 font-semibold text-center">Cambio de partes</td><td class="text-center">$21,000</td><td class="text-center">$26,000</td><td class="text-center">$30,000</td><td class="text-center">$8,000</td></tr>
+                                    <tr><td class="px-4 py-2 font-semibold text-center">No Falla</td><td class="text-center">$10,000</td><td class="text-center">$10,000</td><td class="text-center">$10,000</td><td class="text-center">$8,000</td></tr>
+                                    <tr><td class="px-4 py-2 font-semibold text-center">Cambio Display</td><td class="text-center">$32,000</td><td class="text-center">$42,000</td><td class="text-center">$56,000</td><td class="text-center">-</td></tr>
+                                    <tr><td class="px-4 py-2 font-semibold text-center">Diag. Display</td><td class="text-center">$18,000</td><td class="text-center">$22,000</td><td class="text-center">$30,000</td><td class="text-center">-</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-black text-slate-800 mb-3 uppercase tracking-widest text-center">Línea Blanca</h3>
+                        <div class="table-container bg-white border border-slate-300 shadow-sm">
+                                <table class="w-full text-left text-xs">
+                                <thead class="table-header">
+                                    <tr><th class="px-4 py-3 text-center">Tipo de Servicio</th><th class="px-4 py-3 text-center">Valor</th></tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-100">
+                                    <tr><td class="px-4 py-2 font-semibold text-center">Ajuste sin parte</td><td class="px-4 py-2 text-center">$17,000</td></tr>
+                                    <tr><td class="px-4 py-2 font-semibold text-center">Cambio de producto</td><td class="px-4 py-2 text-center">$17,000</td></tr>
+                                    <tr><td class="px-4 py-2 font-semibold text-center">Cambio de partes</td><td class="px-4 py-2 text-center">$20,000</td></tr>
+                                    <tr><td class="px-4 py-2 font-semibold text-center">No Falla</td><td class="px-4 py-2 text-center">$10,000</td></tr>
+                                    <tr><td class="px-4 py-2 font-semibold text-center">Lavado 2 horas</td><td class="px-4 py-2 text-center">$30,000</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="tab-oow" class="hidden space-y-8">
+            <section class="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm text-center">
+                <h2 class="text-3xl font-black text-slate-800 uppercase italic mb-2 tracking-tighter">Servicios Facturados (OOW) </h2>
+                <p class="text-slate-500 max-w-2xl mx-auto mb-10 leading-snug">Liquidación basada en el valor de la mano de obra <b>antes de IVA</b>.</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white border-2 border-green-500 rounded-2xl p-6 relative overflow-hidden text-left shadow-lg">
+                        <div class="bg-green-500 text-white text-[10px] font-black px-10 py-1 absolute top-4 -right-8 rotate-45">RECOMENDADO</div>
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="text-xl font-black text-slate-1200 uppercase italic">Nivel A: 45% </h3>
+                        </div>
+                        <ul class="space-y-3 text-xs text-slate-900 mb-8">
+                            <li class="flex items-center">✅ Cotización en sitio explicada al cliente. </li>
+                            <li class="flex items-center">✅ Fotos y reporte inmediato en SAMM. </li>
+                            <li class="flex items-center">✅ Reporte vía chat en tiempo real. </li>
+                            <li class="flex items-center">✅ Dinero reportado a Electro Service En efectivo o en tranferencia a la llave que se les indique.</li>
+                        </ul>
+                        <div class="bg-slate-50 p-4 rounded-xl">
+                            <p class="text-[9px] font-bold text-slate-800 uppercase tracking-widest mb-1">Ejemplo MO $220.000</p>
+                            <p class="text-2xl font-black text-green-800 tracking-tighter">Ganas: $83.193 </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-50 border-2 border-red-600 rounded-2xl p-6 text-left">
+                        <h3 class="text-xl font-black text-red-600 uppercase italic mb-6">Nivel B: 30% </h3>
+                        <p class="text-xs text-red-800 mb-16 italic leading-relaxed">
+                            Si el diagnóstico o las evidencias se reportan fuera del domicilio o después del tiempo estipulado. 
+                        </p>
+                        <div class="bg-white p-4 rounded-xl border border-slate-900">
+                            <p class="text-[9px] font-bold text-red-600 uppercase tracking-widest mb-1">Ejemplo MO $220.000</p>
+                            <p class="text-2xl font-black text-red-600 tracking-tighter">Ganas: $55.462 </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </main>
+
+    <script>
+        function switchTab(tab) {
+            const tabGarantias = document.getElementById('tab-garantias');
+            const tabOow = document.getElementById('tab-oow');
+            const btnGarantias = document.getElementById('btn-garantias');
+            const btnOow = document.getElementById('btn-oow');
+
+            if (tab === 'garantias') {
+                tabGarantias.classList.remove('hidden'); tabOow.classList.add('hidden');
+                btnGarantias.classList.add('tab-active'); btnGarantias.classList.remove('text-slate-400');
+                btnOow.classList.remove('tab-active'); btnOow.classList.add('text-slate-400');
+            } else {
+                tabOow.classList.remove('hidden'); tabGarantias.classList.add('hidden');
+                btnOow.classList.add('tab-active'); btnOow.classList.remove('text-slate-400');
+                btnGarantias.classList.remove('tab-active'); btnGarantias.classList.add('text-slate-400');
+            }
+        }
+    </script>
+</body>
+</html>
