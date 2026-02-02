@@ -5,101 +5,417 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estatuto Tarifas 2026 - Electro Service S.A.</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
-        body { font-family: 'Inter', sans-serif; }
-        .bg-brand { background-color: #60a5fa; }
-        .text-brand { color: #a50034; }
-        .tab-active { border-bottom: 4px solid #a50034; color: #a50034; font-weight: 800; }
-        .table-container { overflow-x: auto; border-radius: 12px; }
-        .table-header { background-color: #3b82f6; color: white; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.05em; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-attachment: fixed;
+        }
+        
+        .bg-brand-gradient { 
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 50%, #1e40af 100%);
+        }
+        
+        .tab-active { 
+            background: white;
+            color: #a50034;
+            font-weight: 800;
+            border-radius: 12px 12px 0 0;
+            transform: translateY(2px);
+            box-shadow: 0 -4px 12px rgba(165, 0, 52, 0.15);
+        }
+        
+        .tab-inactive {
+            color: #64748b;
+            background: rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease;
+        }
+        
+        .tab-inactive:hover {
+            background: rgba(255, 255, 255, 0.8);
+            transform: translateY(-2px);
+        }
+        
+        .table-container { 
+            overflow-x: auto; 
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        }
+        
+        .table-header { 
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white; 
+            text-transform: uppercase; 
+            font-size: 0.7rem; 
+            letter-spacing: 0.08em;
+            font-weight: 800;
+        }
+        
+        .badge-a {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+        
+        .badge-b {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .table-row-hover {
+            transition: all 0.2s ease;
+        }
+        
+        .table-row-hover:hover {
+            background: #eff6ff;
+            transform: scale(1.005);
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+        
+        .section-title {
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 80%;
+            background: linear-gradient(180deg, #3b82f6 0%, #2563eb 100%);
+            border-radius: 999px;
+        }
+        
+        @media (max-width: 768px) {
+            .table-container {
+                font-size: 0.7rem;
+            }
+        }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-1000 antialiased pb-20">
+<body class="antialiased pb-20">
 
-    <header class="bg-brand text-white py-8 px-6 text-center shadow-lg">
-        <h1 class="text-2xl font-black uppercase tracking-tighter">Electro Service S.A.</h1>
-        <p class="text-sm font-light opacity-80 uppercase tracking-widest mt-1">Estatuto Tarifas 2026</p>
+    <!-- Header Mejorado -->
+    <header class="bg-brand-gradient text-white py-10 px-6 text-center shadow-2xl relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+        </div>
+        <div class="relative z-10">
+            <div class="inline-block mb-3">
+                <span class="text-6xl">⚡</span>
+            </div>
+            <h1 class="text-3xl md:text-4xl font-black uppercase tracking-tighter mb-2">
+                Electro Service S.A.
+            </h1>
+            <p class="text-sm font-medium opacity-90 uppercase tracking-widest">
+                Estatuto Tarifas 2026
+            </p>
+            <div class="mt-4 text-xs opacity-75">
+                📋 Guía Oficial para Técnicos
+            </div>
+        </div>
     </header>
 
-    <nav class="bg-white border-b border-slate-300 sticky top-0 z-50 shadow-sm">
-        <div class="max-w-5xl mx-auto flex">
-            <button onclick="switchTab('garantias')" id="btn-garantias" class="flex-1 py-4 text-sm font-bold uppercase tracking-tight tab-active transition-all">
-                Garantías
+    <!-- Navegación Mejorada -->
+    <nav class="glass-effect sticky top-0 z-50 shadow-lg">
+        <div class="max-w-7xl mx-auto flex gap-2 p-2">
+            <button 
+                onclick="switchTab('garantias')" 
+                id="btn-garantias" 
+                class="flex-1 py-4 px-4 text-sm font-bold uppercase tracking-tight tab-active transition-all rounded-xl"
+            >
+                <span class="block text-xs opacity-70 mb-1">Sección</span>
+                ✓ Garantías
             </button>
-            <button onclick="switchTab('oow')" id="btn-oow" class="flex-1 py-4 text-sm font-bold uppercase tracking-tight text-slate-400 transition-all">
-                Fuera de Garantía (OOW)
+            <button 
+                onclick="switchTab('oow')" 
+                id="btn-oow" 
+                class="flex-1 py-4 px-4 text-sm font-bold uppercase tracking-tight tab-inactive transition-all rounded-xl"
+            >
+                <span class="block text-xs opacity-70 mb-1">Sección</span>
+                💰 Fuera de Garantía (OOW)
+            </button>
+            <button 
+                onclick="switchTab('viaticos')" 
+                id="btn-viaticos" 
+                class="flex-1 py-4 px-4 text-sm font-bold uppercase tracking-tight tab-inactive transition-all rounded-xl"
+            >
+                <span class="block text-xs opacity-70 mb-1">Sección</span>
+                🚗 Viáticos Cundinamarca
             </button>
         </div>
     </nav>
 
-    <main class="max-w-6xl mx-auto px-4 mt-8">
+    <main class="max-w-7xl mx-auto px-4 mt-8">
 
+        <!-- TAB GARANTÍAS -->
         <div id="tab-garantias" class="space-y-12">
             
-            <section class="bg-amber-50 border-2 border-amber-200 rounded-2xl p-6">
-                <h2 class="text-amber-800 font-black text-sm uppercase mb-3 flex items-center italic">
-                    ⚠️ Requisitos para Tarifa Tipo A
-                </h2>
-                <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 text-sm text-amber-900">
-                    <li>• Confirmar ruta antes de las <b>9:00 a.m.</b></li>
-                    <li>• Envío de datos (Modelo, serie, factura) vía WhatsApp en línea.</li>
-                    <li>• Cargar imágenes en linea en <b>SAMM</b> con marca de agua.</li>
-                    <li>• Reportar novedades de la ruta en tiempo real.</li>
-                    <li>• Completar módulos en <b>EDX Learning</b> y uso de <b>CSportal</b>.</li>
-                </ul>
+            <!-- Requisitos Tarifa A - Mejorado -->
+            <section class="glass-effect rounded-3xl p-8 border-2 border-amber-300 shadow-2xl card-hover">
+                <div class="flex items-start gap-4 mb-6">
+                    <div class="bg-amber-500 text-white rounded-2xl p-4 text-4xl pulse-animation">
+                        ⚠️
+                    </div>
+                    <div>
+                        <h2 class="text-amber-800 font-black text-xl uppercase mb-2">
+                            Requisitos para Tarifa Tipo A
+                        </h2>
+                        <p class="text-amber-700 text-sm font-medium">
+                            Cumple estos requisitos para acceder a la mejor tarifa
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-white bg-opacity-60 rounded-2xl p-5 border border-amber-200">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="bg-amber-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-black text-sm">1</span>
+                            <h3 class="font-bold text-amber-900">Confirmación de Ruta</h3>
+                        </div>
+                        <p class="text-amber-800 text-sm leading-relaxed">
+                            ⏰ Confirmar ruta antes de las <b>9:00 a.m.</b>
+                        </p>
+                    </div>
+                    
+                    <div class="bg-white bg-opacity-60 rounded-2xl p-5 border border-amber-200">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="bg-amber-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-black text-sm">2</span>
+                            <h3 class="font-bold text-amber-900">Datos en Tiempo Real</h3>
+                        </div>
+                        <p class="text-amber-800 text-sm leading-relaxed">
+                            📱 Envío de datos (Modelo, serie, factura) vía WhatsApp en línea
+                        </p>
+                    </div>
+                    
+                    <div class="bg-white bg-opacity-60 rounded-2xl p-5 border border-amber-200">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="bg-amber-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-black text-sm">3</span>
+                            <h3 class="font-bold text-amber-900">Evidencias Fotográficas</h3>
+                        </div>
+                        <p class="text-amber-800 text-sm leading-relaxed">
+                            📸 Cargar imágenes en línea en <b>SAMM</b> con marca de agua
+                        </p>
+                    </div>
+                    
+                    <div class="bg-white bg-opacity-60 rounded-2xl p-5 border border-amber-200">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="bg-amber-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-black text-sm">4</span>
+                            <h3 class="font-bold text-amber-900">Reportes y Capacitación</h3>
+                        </div>
+                        <p class="text-amber-800 text-sm leading-relaxed mb-4">
+                            📊 Novedades en tiempo real + Módulos <b>EDX Learning</b> y <b>CSportal</b>
+                        </p>
+                        
+                        <!-- EDX Learning -->
+                        <div class="bg-gradient-to-r from-blue-50 to-blue-100 border-2 border-blue-300 rounded-xl p-4 mb-3">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="text-lg">📚</span>
+                                <h4 class="font-black text-blue-900 text-xs uppercase">EDX Learning</h4>
+                            </div>
+                            <a href="http://edxlearning.lge.com/" target="_blank" class="block bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs px-4 py-2 rounded-lg mb-3 text-center transition-all hover:scale-105 shadow-md">
+                                🔗 Ir a EDX Learning
+                            </a>
+                            <div class="space-y-1 text-xs">
+                                <p class="text-blue-900">
+                                    <span class="font-black">Usuario:</span> Tu correo electrónico
+                                </p>
+                                <p class="text-blue-900">
+                                    <span class="font-black">Contraseña:</span> <code class="bg-blue-200 px-2 py-0.5 rounded font-mono font-bold">lge123!</code>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- CS Portal -->
+                        <div class="bg-gradient-to-r from-purple-50 to-purple-100 border-2 border-purple-300 rounded-xl p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="text-lg">💻</span>
+                                <h4 class="font-black text-purple-900 text-xs uppercase">CS Portal</h4>
+                            </div>
+                            <a href="https://csportal.lge.com/download" target="_blank" class="block bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs px-4 py-2 rounded-lg mb-3 text-center transition-all hover:scale-105 shadow-md">
+                                📥 Descargar CS Portal
+                            </a>
+                            <div class="space-y-1 text-xs">
+                                <p class="text-purple-900">
+                                    <span class="font-black">Usuario:</span> Consultar con tu supervisor
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
-            <section>
-                <div class="flex items-center gap-4 mb-6">
-                    <span class="bg-green-600 text-white text-xs font-black px-3 py-1 rounded-md">TARIFA A</span>
-                    <h2 class="text-2xl font-black text-slate-800 uppercase tracking-tighter">Excelencia y Cumplimiento</h2>
+            <!-- TARIFA A -->
+            <section class="glass-effect rounded-3xl p-8 shadow-2xl">
+                <div class="flex items-center gap-4 mb-8 flex-wrap">
+                    <span class="badge-a text-white text-sm font-black px-6 py-3 rounded-2xl">
+                        ⭐ TARIFA A
+                    </span>
+                    <h2 class="text-3xl font-black text-slate-800 uppercase tracking-tighter">
+                        Excelencia y Cumplimiento
+                    </h2>
+                    <span class="ml-auto bg-green-100 text-green-800 text-xs font-bold px-4 py-2 rounded-full">
+                        Máxima Remuneración
+                    </span>
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Línea Marrón Tarifa A -->
                     <div class="lg:col-span-2">
-                        <h3 class="text-sm font-black text-slate-800 mb-3 uppercase tracking-widest text-center">Línea Marrón</h3>
-                        <div class="table-container bg-white border border-slate-300 shadow-sm">
+                        <div class="section-title">
+                            <h3 class="text-base font-black text-slate-800 mb-4 uppercase tracking-widest">
+                                📺 Línea Marrón
+                            </h3>
+                        </div>
+                        <div class="table-container bg-white">
                             <table class="w-full text-left text-xs">
                                 <thead class="table-header">
                                     <tr>
-                                        <th class="px-4 py-3 text-center">Tipo Servicio</th>
-                                        <th class="px-2 py-3 text-center">≤ 50"</th>
-                                        <th class="px-2 py-3 text-center">> 50"</th>
-                                        <th class="px-2 py-3 text-center">≥ 70"</th>
-                                        <th class="px-2 py-3 text-center">Horno/Audio</th>
+                                        <th class="px-4 py-4 text-left">Tipo Servicio</th>
+                                        <th class="px-3 py-4 text-center">≤ 50"</th>
+                                        <th class="px-3 py-4 text-center">> 50"</th>
+                                        <th class="px-3 py-4 text-center">≥ 70"</th>
+                                        <th class="px-3 py-4 text-center">Horno/Audio</th>
                                     </tr>
                                 </thead>
                                 <tbody class="divide-y divide-slate-100">
-                                    <tr><td class="px-4 py-2 font-semibold text-center">Ajuste sin parte</td><td class="text-center">$22,000</td><td class="text-center">$29,000</td><td class="text-center">$32,000</td><td class="text-center">$10,000</td></tr>
-                                    <tr><td class="px-4 py-2 font-semibold text-center">Cambio de producto</td><td class="text-center">$20,000</td><td class="text-center">$25,000</td><td class="text-center">$30,000</td><td class="text-center">$10,000</td></tr>
-                                    <tr><td class="px-4 py-2 font-semibold text-center">Cambio de partes</td><td class="text-center">$22,000</td><td class="text-center">$29,000</td><td class="text-center">$32,000</td><td class="text-center">$10,000</td></tr>
-                                    <tr><td class="px-4 py-2 font-semibold text-center">No Falla</td><td class="text-center">$17,000</td><td class="text-center">$17,000</td><td class="text-center">$17,000</td><td class="text-center">$10,000</td></tr>
-                                    <tr><td class="px-4 py-2 font-semibold text-center">Cambio de Display</td><td class="text-center">$35,000</td><td class="text-center">$50,000</td><td class="text-center">$60,000</td><td class="text-center">-</td></tr>
-                                    <tr><td class="px-4 py-2 font-semibold text-center">Diagnóstico Display</td><td class="text-center">$19,000</td><td class="text-center">$25,000</td><td class="text-center">$30,000</td><td class="text-center">-</td></tr>
-                                    <tr><td class="px-4 py-2 font-semibold text-center">Actualización Software</td><td class="text-center">$20,000</td><td class="text-center">$20,000</td><td class="text-center">$20,000</td><td class="text-center">-</td></tr>
-                                    <tr><td class="px-4 py-2 font-semibold text-center">Reingreso de otro tecnico 1 visita</td><td class="px-4 py-2 text-center">$30,000</td></tr>
-	                               <tr><td class="px-4 py-2 font-semibold text-center">Reingreso de otro tecnico 2 visitas</td><td class="px-4 py-2 text-center">$70,000</td></tr>
+                                    <tr class="table-row-hover">
+                                        <td class="px-4 py-3 font-bold text-slate-700">Ajuste sin parte</td>
+                                        <td class="px-3 py-3 text-center font-black text-blue-600">$22,000</td>
+                                        <td class="px-3 py-3 text-center font-black text-blue-600">$29,000</td>
+                                        <td class="px-3 py-3 text-center font-black text-blue-600">$32,000</td>
+                                        <td class="px-3 py-3 text-center font-black text-blue-600">$10,000</td>
+                                    </tr>
+                                    <tr class="table-row-hover">
+                                        <td class="px-4 py-3 font-bold text-slate-700">Cambio de producto</td>
+                                        <td class="px-3 py-3 text-center font-black text-blue-600">$20,000</td>
+                                        <td class="px-3 py-3 text-center font-black text-blue-600">$25,000</td>
+                                        <td class="px-3 py-3 text-center font-black text-blue-600">$30,000</td>
+                                        <td class="px-3 py-3 text-center font-black text-blue-600">$10,000</td>
+                                    </tr>
+                                    <tr class="table-row-hover">
+                                        <td class="px-4 py-3 font-bold text-slate-700">Cambio de partes</td>
+                                        <td class="px-3 py-3 text-center font-black text-blue-600">$22,000</td>
+                                        <td class="px-3 py-3 text-center font-black text-blue-600">$29,000</td>
+                                        <td class="px-3 py-3 text-center font-black text-blue-600">$32,000</td>
+                                        <td class="px-3 py-3 text-center font-black text-blue-600">$10,000</td>
+                                    </tr>
+                                    <tr class="table-row-hover">
+                                        <td class="px-4 py-3 font-bold text-slate-700">No Falla</td>
+                                        <td class="px-3 py-3 text-center font-black text-blue-600">$17,000</td>
+                                        <td class="px-3 py-3 text-center font-black text-blue-600">$17,000</td>
+                                        <td class="px-3 py-3 text-center font-black text-blue-600">$17,000</td>
+                                        <td class="px-3 py-3 text-center font-black text-blue-600">$10,000</td>
+                                    </tr>
+                                    <tr class="table-row-hover">
+                                        <td class="px-4 py-3 font-bold text-slate-700">Cambio de Display</td>
+                                        <td class="px-3 py-3 text-center font-black text-blue-600">$35,000</td>
+                                        <td class="px-3 py-3 text-center font-black text-blue-600">$50,000</td>
+                                        <td class="px-3 py-3 text-center font-black text-blue-600">$60,000</td>
+                                        <td class="px-3 py-3 text-center font-black text-slate-400">-</td>
+                                    </tr>
+                                    <tr class="table-row-hover">
+                                        <td class="px-4 py-3 font-bold text-slate-700">Diagnóstico Display</td>
+                                        <td class="px-3 py-3 text-center font-black text-blue-600">$19,000</td>
+                                        <td class="px-3 py-3 text-center font-black text-blue-600">$25,000</td>
+                                        <td class="px-3 py-3 text-center font-black text-blue-600">$30,000</td>
+                                        <td class="px-3 py-3 text-center font-black text-slate-400">-</td>
+                                    </tr>
+                                    <tr class="table-row-hover">
+                                        <td class="px-4 py-3 font-bold text-slate-700">Actualización Software</td>
+                                        <td class="px-3 py-3 text-center font-black text-blue-600">$20,000</td>
+                                        <td class="px-3 py-3 text-center font-black text-blue-600">$20,000</td>
+                                        <td class="px-3 py-3 text-center font-black text-blue-600">$20,000</td>
+                                        <td class="px-3 py-3 text-center font-black text-slate-400">-</td>
+                                    </tr>
+                                    <tr class="table-row-hover bg-amber-50">
+                                        <td class="px-4 py-3 font-bold text-amber-900">Reingreso de otro técnico 1 visita</td>
+                                        <td colspan="4" class="px-3 py-3 text-center font-black text-amber-700">$30,000</td>
+                                    </tr>
+                                    <tr class="table-row-hover bg-amber-50">
+                                        <td class="px-4 py-3 font-bold text-amber-900">Reingreso de otro técnico 2 visitas</td>
+                                        <td colspan="4" class="px-3 py-3 text-center font-black text-amber-700">$70,000</td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
+                    
+                    <!-- Línea Blanca Tarifa A -->
                     <div>
-                        <h3 class="text-sm font-black text-slate-800 mb-3 uppercase tracking-widest text-center">Línea Blanca</h3>
-                        <div class="table-container bg-white border border-slate-300 shadow-sm">
+                        <div class="section-title">
+                            <h3 class="text-base font-black text-slate-800 mb-4 uppercase tracking-widest">
+                                🧺 Línea Blanca
+                            </h3>
+                        </div>
+                        <div class="table-container bg-white">
                             <table class="w-full text-left text-xs">
                                 <thead class="table-header">
-                                    <tr><th class="px-4 py-3 text-center">Tipo Servicio</th><th class="px-4 py-3 text-center">Valor</th></tr>
+                                    <tr>
+                                        <th class="px-4 py-4 text-left">Tipo Servicio</th>
+                                        <th class="px-4 py-4 text-center">Valor</th>
+                                    </tr>
                                 </thead>
                                 <tbody class="divide-y divide-slate-100">
-                                    <tr><td class="px-4 py-2 font-semibold text-center">Ajuste sin parte</td><td class="px-4 py-2 text-center">$25,000</td></tr>
-                                    <tr><td class="px-4 py-2 font-semibold text-center">Cambio de producto</td><td class="px-4 py-2 text-center">$20,000</td></tr>
-                                    <tr><td class="px-4 py-2 font-semibold text-center">Cambio de partes</td><td class="px-4 py-2 text-center">$25,000</td></tr>
-                                    <tr><td class="px-4 py-2 font-semibold text-center">No Falla</td><td class="px-4 py-2 text-center">$17,000</td></tr>
-                                    <tr><td class="px-4 py-2 font-semibold text-center">Lavado 2 horas</td><td class="px-4 py-2 text-center">$30,000</td></tr>
-                                    <tr><td class="px-4 py-2 font-semibold text-center">Tina y Araña</td><td class="px-4 py-2 text-center">$35,000</td></tr>
-                                    <tr><td class="px-4 py-2 font-semibold text-center">Reingreso de otro tecnico 1 visita</td><td class="px-4 py-2 text-center">$30,000</td></tr>
-	                               <tr><td class="px-4 py-2 font-semibold text-center">Reingreso de otro tecnico 2 visitas</td><td class="px-4 py-2 text-center">$80,000</td></tr>
+                                    <tr class="table-row-hover">
+                                        <td class="px-4 py-3 font-bold text-slate-700">Ajuste sin parte</td>
+                                        <td class="px-4 py-3 text-center font-black text-blue-600">$25,000</td>
+                                    </tr>
+                                    <tr class="table-row-hover">
+                                        <td class="px-4 py-3 font-bold text-slate-700">Cambio de producto</td>
+                                        <td class="px-4 py-3 text-center font-black text-blue-600">$20,000</td>
+                                    </tr>
+                                    <tr class="table-row-hover">
+                                        <td class="px-4 py-3 font-bold text-slate-700">Cambio de partes</td>
+                                        <td class="px-4 py-3 text-center font-black text-blue-600">$25,000</td>
+                                    </tr>
+                                    <tr class="table-row-hover">
+                                        <td class="px-4 py-3 font-bold text-slate-700">No Falla</td>
+                                        <td class="px-4 py-3 text-center font-black text-blue-600">$17,000</td>
+                                    </tr>
+                                    <tr class="table-row-hover">
+                                        <td class="px-4 py-3 font-bold text-slate-700">Lavado 2 horas</td>
+                                        <td class="px-4 py-3 text-center font-black text-blue-600">$30,000</td>
+                                    </tr>
+                                    <tr class="table-row-hover">
+                                        <td class="px-4 py-3 font-bold text-slate-700">Tina y Araña</td>
+                                        <td class="px-4 py-3 text-center font-black text-blue-600">$35,000</td>
+                                    </tr>
+                                    <tr class="table-row-hover bg-amber-50">
+                                        <td class="px-4 py-3 font-bold text-amber-900">Reingreso de otro técnico 1 visita</td>
+                                        <td class="px-4 py-3 text-center font-black text-amber-700">$30,000</td>
+                                    </tr>
+                                    <tr class="table-row-hover bg-amber-50">
+                                        <td class="px-4 py-3 font-bold text-amber-900">Reingreso de otro técnico 2 visitas</td>
+                                        <td class="px-4 py-3 text-center font-black text-amber-700">$80,000</td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -107,50 +423,123 @@
                 </div>
             </section>
 
-            <section class="opacity-90">
-                <div class="flex items-center gap-4 mb-6">
-                    <span class="bg-red-700 text-white text-xs font-black px-3 py-1 rounded-md">TARIFA B</span>
-                    <h2 class="text-2xl font-black text-slate-800 uppercase tracking-tighter">Incumplimiento de Flujo</h2>
+            <!-- TARIFA B -->
+            <section class="glass-effect rounded-3xl p-8 shadow-2xl opacity-90">
+                <div class="flex items-center gap-4 mb-8 flex-wrap">
+                    <span class="badge-b text-white text-sm font-black px-6 py-3 rounded-2xl">
+                        ⚠️ TARIFA B
+                    </span>
+                    <h2 class="text-3xl font-black text-slate-800 uppercase tracking-tighter">
+                        Incumplimiento de Flujo
+                    </h2>
+                    <span class="ml-auto bg-red-100 text-red-800 text-xs font-bold px-4 py-2 rounded-full">
+                        Tarifa Reducida
+                    </span>
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Línea Marrón Tarifa B -->
                     <div class="lg:col-span-2">
-                        <h3 class="text-sm font-black text-slate-800 mb-3 uppercase tracking-widest text-center">Línea Marrón</h3>
-                        <div class="table-container bg-white border border-slate-300 shadow-sm">
+                        <div class="section-title">
+                            <h3 class="text-base font-black text-slate-800 mb-4 uppercase tracking-widest">
+                                📺 Línea Marrón
+                            </h3>
+                        </div>
+                        <div class="table-container bg-white">
                             <table class="w-full text-left text-xs">
-                                <thead class="table-header">
+                                <thead class="table-header bg-red-600">
                                     <tr>
-                                        <th class="px-4 py-2 font-semibold text-center">Tipo de Servicio</th>
-                                        <th class="px-4 py-2 font-semibold text-center">≤ 50"</th>
-                                        <th class="px-4 py-2 font-semibold text-center">> 50"</th>
-                                        <th class="px-4 py-2 font-semibold text-center">≥ 70"</th>
-                                        <th class="px-4 py-2 font-semibold text-center">Horno/Audio</th>
+                                        <th class="px-4 py-4 text-left">Tipo de Servicio</th>
+                                        <th class="px-3 py-4 text-center">≤ 50"</th>
+                                        <th class="px-3 py-4 text-center">> 50"</th>
+                                        <th class="px-3 py-4 text-center">≥ 70"</th>
+                                        <th class="px-3 py-4 text-center">Horno/Audio</th>
                                     </tr>
                                 </thead>
                                 <tbody class="divide-y divide-slate-100">
-                                    <tr><td class="px-4 py-2 font-semibold text-center">Ajuste sin parte</td><td class="text-center">$20,000</td><td class="text-center font-bold">$25,000</td><td class="text-center">$30,000</td><td class="text-center">$8,000</td></tr>
-                                    <tr><td class="px-4 py-2 font-semibold text-center">Cambio producto</td><td class="text-center">$14,000</td><td class="text-center">$16,000</td><td class="text-center">$17,000</td><td class="text-center">$8,000</td></tr>
-                                    <tr><td class="px-4 py-2 font-semibold text-center">Cambio de partes</td><td class="text-center">$21,000</td><td class="text-center">$26,000</td><td class="text-center">$30,000</td><td class="text-center">$8,000</td></tr>
-                                    <tr><td class="px-4 py-2 font-semibold text-center">No Falla</td><td class="text-center">$10,000</td><td class="text-center">$10,000</td><td class="text-center">$10,000</td><td class="text-center">$8,000</td></tr>
-                                    <tr><td class="px-4 py-2 font-semibold text-center">Cambio Display</td><td class="text-center">$32,000</td><td class="text-center">$42,000</td><td class="text-center">$56,000</td><td class="text-center">-</td></tr>
-                                    <tr><td class="px-4 py-2 font-semibold text-center">Diag. Display</td><td class="text-center">$18,000</td><td class="text-center">$22,000</td><td class="text-center">$30,000</td><td class="text-center">-</td></tr>
+                                    <tr class="table-row-hover">
+                                        <td class="px-4 py-3 font-bold text-slate-700">Ajuste sin parte</td>
+                                        <td class="px-3 py-3 text-center font-black text-red-600">$20,000</td>
+                                        <td class="px-3 py-3 text-center font-black text-red-600">$25,000</td>
+                                        <td class="px-3 py-3 text-center font-black text-red-600">$30,000</td>
+                                        <td class="px-3 py-3 text-center font-black text-red-600">$8,000</td>
+                                    </tr>
+                                    <tr class="table-row-hover">
+                                        <td class="px-4 py-3 font-bold text-slate-700">Cambio producto</td>
+                                        <td class="px-3 py-3 text-center font-black text-red-600">$14,000</td>
+                                        <td class="px-3 py-3 text-center font-black text-red-600">$16,000</td>
+                                        <td class="px-3 py-3 text-center font-black text-red-600">$17,000</td>
+                                        <td class="px-3 py-3 text-center font-black text-red-600">$8,000</td>
+                                    </tr>
+                                    <tr class="table-row-hover">
+                                        <td class="px-4 py-3 font-bold text-slate-700">Cambio de partes</td>
+                                        <td class="px-3 py-3 text-center font-black text-red-600">$21,000</td>
+                                        <td class="px-3 py-3 text-center font-black text-red-600">$26,000</td>
+                                        <td class="px-3 py-3 text-center font-black text-red-600">$30,000</td>
+                                        <td class="px-3 py-3 text-center font-black text-red-600">$8,000</td>
+                                    </tr>
+                                    <tr class="table-row-hover">
+                                        <td class="px-4 py-3 font-bold text-slate-700">No Falla</td>
+                                        <td class="px-3 py-3 text-center font-black text-red-600">$10,000</td>
+                                        <td class="px-3 py-3 text-center font-black text-red-600">$10,000</td>
+                                        <td class="px-3 py-3 text-center font-black text-red-600">$10,000</td>
+                                        <td class="px-3 py-3 text-center font-black text-red-600">$8,000</td>
+                                    </tr>
+                                    <tr class="table-row-hover">
+                                        <td class="px-4 py-3 font-bold text-slate-700">Cambio Display</td>
+                                        <td class="px-3 py-3 text-center font-black text-red-600">$32,000</td>
+                                        <td class="px-3 py-3 text-center font-black text-red-600">$42,000</td>
+                                        <td class="px-3 py-3 text-center font-black text-red-600">$56,000</td>
+                                        <td class="px-3 py-3 text-center font-black text-slate-400">-</td>
+                                    </tr>
+                                    <tr class="table-row-hover">
+                                        <td class="px-4 py-3 font-bold text-slate-700">Diag. Display</td>
+                                        <td class="px-3 py-3 text-center font-black text-red-600">$18,000</td>
+                                        <td class="px-3 py-3 text-center font-black text-red-600">$22,000</td>
+                                        <td class="px-3 py-3 text-center font-black text-red-600">$30,000</td>
+                                        <td class="px-3 py-3 text-center font-black text-slate-400">-</td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
+                    
+                    <!-- Línea Blanca Tarifa B -->
                     <div>
-                        <h3 class="text-sm font-black text-slate-800 mb-3 uppercase tracking-widest text-center">Línea Blanca</h3>
-                        <div class="table-container bg-white border border-slate-300 shadow-sm">
-                                <table class="w-full text-left text-xs">
-                                <thead class="table-header">
-                                    <tr><th class="px-4 py-3 text-center">Tipo de Servicio</th><th class="px-4 py-3 text-center">Valor</th></tr>
+                        <div class="section-title">
+                            <h3 class="text-base font-black text-slate-800 mb-4 uppercase tracking-widest">
+                                🧺 Línea Blanca
+                            </h3>
+                        </div>
+                        <div class="table-container bg-white">
+                            <table class="w-full text-left text-xs">
+                                <thead class="table-header bg-red-600">
+                                    <tr>
+                                        <th class="px-4 py-4 text-left">Tipo de Servicio</th>
+                                        <th class="px-4 py-4 text-center">Valor</th>
+                                    </tr>
                                 </thead>
                                 <tbody class="divide-y divide-slate-100">
-                                    <tr><td class="px-4 py-2 font-semibold text-center">Ajuste sin parte</td><td class="px-4 py-2 text-center">$17,000</td></tr>
-                                    <tr><td class="px-4 py-2 font-semibold text-center">Cambio de producto</td><td class="px-4 py-2 text-center">$17,000</td></tr>
-                                    <tr><td class="px-4 py-2 font-semibold text-center">Cambio de partes</td><td class="px-4 py-2 text-center">$20,000</td></tr>
-                                    <tr><td class="px-4 py-2 font-semibold text-center">No Falla</td><td class="px-4 py-2 text-center">$10,000</td></tr>
-                                    <tr><td class="px-4 py-2 font-semibold text-center">Lavado 2 horas</td><td class="px-4 py-2 text-center">$30,000</td></tr>
+                                    <tr class="table-row-hover">
+                                        <td class="px-4 py-3 font-bold text-slate-700">Ajuste sin parte</td>
+                                        <td class="px-4 py-3 text-center font-black text-red-600">$17,000</td>
+                                    </tr>
+                                    <tr class="table-row-hover">
+                                        <td class="px-4 py-3 font-bold text-slate-700">Cambio de producto</td>
+                                        <td class="px-4 py-3 text-center font-black text-red-600">$17,000</td>
+                                    </tr>
+                                    <tr class="table-row-hover">
+                                        <td class="px-4 py-3 font-bold text-slate-700">Cambio de partes</td>
+                                        <td class="px-4 py-3 text-center font-black text-red-600">$20,000</td>
+                                    </tr>
+                                    <tr class="table-row-hover">
+                                        <td class="px-4 py-3 font-bold text-slate-700">No Falla</td>
+                                        <td class="px-4 py-3 text-center font-black text-red-600">$10,000</td>
+                                    </tr>
+                                    <tr class="table-row-hover">
+                                        <td class="px-4 py-3 font-bold text-slate-700">Lavado 2 horas</td>
+                                        <td class="px-4 py-3 text-center font-black text-red-600">$30,000</td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -159,45 +548,253 @@
             </section>
         </div>
 
+        <!-- TAB OOW (FUERA DE GARANTÍA) -->
         <div id="tab-oow" class="hidden space-y-8">
-            <section class="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm text-center">
-                <h2 class="text-3xl font-black text-slate-800 uppercase italic mb-2 tracking-tighter">Servicios Facturados (OOW) </h2>
-                <p class="text-slate-500 max-w-2xl mx-auto mb-10 leading-snug">Liquidación basada en el valor de la mano de obra <b>antes de IVA</b>.</p>
+            <section class="glass-effect rounded-3xl p-10 shadow-2xl">
+                <div class="text-center mb-10">
+                    <div class="inline-block mb-4">
+                        <span class="text-6xl">💰</span>
+                    </div>
+                    <h2 class="text-4xl font-black text-slate-800 uppercase mb-3 tracking-tighter">
+                        Servicios Facturados (OOW)
+                    </h2>
+                    <p class="text-slate-600 max-w-2xl mx-auto text-base leading-relaxed font-medium">
+                        Liquidación basada en el valor de la mano de obra <b>antes de IVA</b>
+                    </p>
+                </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="bg-white border-2 border-green-500 rounded-2xl p-6 relative overflow-hidden text-left shadow-lg">
-                        <div class="bg-green-500 text-white text-[10px] font-black px-10 py-1 absolute top-4 -right-8 rotate-45">RECOMENDADO</div>
-                        <div class="flex justify-between items-center mb-6">
-                            <h3 class="text-xl font-black text-slate-1200 uppercase italic">Nivel A: 45% </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <!-- Nivel A: 45% -->
+                    <div class="bg-gradient-to-br from-green-50 to-emerald-50 border-4 border-green-500 rounded-3xl p-8 relative overflow-hidden shadow-2xl card-hover">
+                        <!-- Badge Recomendado -->
+                        <div class="absolute -top-1 -right-1">
+                            <div class="bg-green-500 text-white text-[9px] font-black px-12 py-1.5 rotate-45 translate-x-6 translate-y-4 shadow-lg">
+                                ⭐ RECOMENDADO
+                            </div>
                         </div>
-                        <ul class="space-y-3 text-xs text-slate-900 mb-8">
-                            <li class="flex items-center">✅ Cotización en sitio explicada al cliente. </li>
-                            <li class="flex items-center">✅ Fotos y reporte inmediato en SAMM. </li>
-                            <li class="flex items-center">✅ Reporte vía chat en tiempo real. </li>
-                            <li class="flex items-center">✅ Dinero reportado a Electro Service En efectivo o en tranferencia a la llave @PLATA3160275004.</li>
-                        </ul>
-                        <div class="bg-slate-50 p-4 rounded-xl">
-                            <p class="text-[9px] font-bold text-slate-800 uppercase tracking-widest mb-1">Ejemplo 1 Diagnostico $80.000</p>
-                            <p class="text-2xl font-black text-green-800 tracking-tighter">Ganas: $30.252 </p>
+                        
+                        <div class="mb-6">
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="bg-green-500 text-white rounded-2xl p-3 text-3xl">
+                                    ✓
+                                </div>
+                                <div>
+                                    <h3 class="text-2xl font-black text-green-800 uppercase">
+                                        Nivel A: 45%
+                                    </h3>
+                                    <p class="text-green-600 text-xs font-bold">Máxima Comisión</p>
+                                </div>
+                            </div>
                         </div>
-						<div class="bg-slate-50 p-4 rounded-xl">
-                            <p class="text-[9px] font-bold text-slate-800 uppercase tracking-widest mb-1">Ejemplo 2 MO $220.000</p>
-                            <p class="text-2xl font-black text-green-800 tracking-tighter">Ganas: $83.193 </p>
+                        
+                        <div class="space-y-4 mb-8">
+                            <div class="bg-white bg-opacity-70 rounded-2xl p-4 border border-green-200">
+                                <div class="flex items-start gap-3">
+                                    <span class="text-2xl">✅</span>
+                                    <p class="text-sm text-green-900 font-medium leading-relaxed">
+                                        Cotización en sitio explicada al cliente
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white bg-opacity-70 rounded-2xl p-4 border border-green-200">
+                                <div class="flex items-start gap-3">
+                                    <span class="text-2xl">✅</span>
+                                    <p class="text-sm text-green-900 font-medium leading-relaxed">
+                                        Fotos y reporte inmediato en SAMM
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white bg-opacity-70 rounded-2xl p-4 border border-green-200">
+                                <div class="flex items-start gap-3">
+                                    <span class="text-2xl">✅</span>
+                                    <p class="text-sm text-green-900 font-medium leading-relaxed">
+                                        Reporte vía chat en tiempo real
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white bg-opacity-70 rounded-2xl p-4 border border-green-200">
+                                <div class="flex items-start gap-3">
+                                    <span class="text-2xl">✅</span>
+                                    <p class="text-sm text-green-900 font-medium leading-relaxed">
+                                        Dinero reportado a Electro Service en efectivo o transferencia a la llave indicada
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gradient-to-br from-green-600 to-green-700 p-6 rounded-2xl shadow-xl">
+                            <p class="text-[10px] font-black text-green-100 uppercase tracking-widest mb-2 text-center">
+                                📊 Ejemplo con MO $220.000
+                            </p>
+                            <p class="text-4xl font-black text-white text-center tracking-tight">
+                                Ganas: $83.193
+                            </p>
+                            <p class="text-xs text-green-100 text-center mt-2 font-medium">
+                                45% de comisión
+                            </p>
                         </div>
                     </div>
 
-                    <div class="bg-slate-50 border-2 border-red-600 rounded-2xl p-6 text-left">
-                        <h3 class="text-xl font-black text-red-600 uppercase italic mb-6">Nivel B: 30% </h3>
-                        <p class="text-xs text-red-800 mb-16 italic leading-relaxed">
-                            Si el diagnóstico o las evidencias se reportan fuera del domicilio o después del tiempo estipulado. 
-                        </p>
-                        <div class="bg-white p-4 rounded-xl border border-slate-900">
-                            <p class="text-[9px] font-bold text-red-600 uppercase tracking-widest mb-1">Ejemplo 1 Diagnostico $80.000</p>
-                            <p class="text-2xl font-black text-red-600 tracking-tighter">Ganas: $20.168 </p>
+                    <!-- Nivel B: 30% -->
+                    <div class="bg-gradient-to-br from-red-50 to-rose-50 border-4 border-red-600 rounded-3xl p-8 shadow-2xl card-hover">
+                        <div class="mb-6">
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="bg-red-600 text-white rounded-2xl p-3 text-3xl">
+                                    ⚠️
+                                </div>
+                                <div>
+                                    <h3 class="text-2xl font-black text-red-800 uppercase">
+                                        Nivel B: 30%
+                                    </h3>
+                                    <p class="text-red-600 text-xs font-bold">Comisión Reducida</p>
+                                </div>
+                            </div>
                         </div>
-						<div class="bg-white p-4 rounded-xl border border-slate-900">
-                            <p class="text-[9px] font-bold text-red-600 uppercase tracking-widest mb-1">Ejemplo 2 MO $220.000</p>
-                            <p class="text-2xl font-black text-red-600 tracking-tighter">Ganas: $55.462 </p>
+                        
+                        <div class="bg-white bg-opacity-70 rounded-2xl p-6 border border-red-200 mb-8">
+                            <div class="flex items-start gap-3">
+                                <span class="text-3xl">❌</span>
+                                <div>
+                                    <p class="text-sm text-red-900 font-bold mb-2">
+                                        Aplica cuando:
+                                    </p>
+                                    <p class="text-sm text-red-800 leading-relaxed">
+                                        El diagnóstico o las evidencias se reportan <b>fuera del domicilio</b> o <b>después del tiempo estipulado</b>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-auto">
+                            <div class="bg-gradient-to-br from-red-600 to-red-700 p-6 rounded-2xl shadow-xl">
+                                <p class="text-[10px] font-black text-red-100 uppercase tracking-widest mb-2 text-center">
+                                    📊 Ejemplo con MO $220.000
+                                </p>
+                                <p class="text-4xl font-black text-white text-center tracking-tight">
+                                    Ganas: $55.462
+                                </p>
+                                <p class="text-xs text-red-100 text-center mt-2 font-medium">
+                                    30% de comisión
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6 bg-red-100 rounded-2xl p-4 border border-red-300">
+                            <p class="text-xs text-red-900 font-bold text-center">
+                                💡 Cumple los requisitos para ganar más con el Nivel A
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- TAB VIÁTICOS CUNDINAMARCA -->
+        <div id="tab-viaticos" class="hidden space-y-8">
+            <section class="glass-effect rounded-3xl p-10 shadow-2xl">
+                <div class="text-center mb-8">
+                    <div class="inline-block mb-4">
+                        <span class="text-6xl">🚗</span>
+                    </div>
+                    <h2 class="text-4xl font-black text-slate-800 uppercase mb-3 tracking-tighter">
+                        Viáticos Cundinamarca 2026
+                    </h2>
+                    <p class="text-slate-600 max-w-2xl mx-auto text-base leading-relaxed font-medium mb-6">
+                        Pagos que recibirás por desplazamientos fuera de Bogotá
+                    </p>
+                    
+                    <!-- Buscador -->
+                    <div class="max-w-xl mx-auto">
+                        <input 
+                            type="text" 
+                            id="searchViaticos" 
+                            onkeyup="filterViaticos()" 
+                            placeholder="🔍 Buscar población (ej: Chía, Zipaquirá, Fusagasugá)..." 
+                            class="w-full p-4 bg-white border-2 border-slate-200 rounded-2xl outline-none focus:border-purple-500 shadow-lg transition-all text-base"
+                        >
+                    </div>
+                </div>
+
+                <!-- Leyenda -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                    <div class="bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-300 rounded-2xl p-4">
+                        <div class="flex items-center gap-3">
+                            <div class="bg-green-500 rounded-full p-3 text-white text-xl">💵</div>
+                            <div>
+                                <p class="text-xs font-black text-green-800 uppercase">Instalación</p>
+                                <p class="text-green-600 text-xs font-medium">Pago por servicios de instalación</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gradient-to-br from-blue-50 to-blue-100 border-2 border-blue-300 rounded-2xl p-4">
+                        <div class="flex items-center gap-3">
+                            <div class="bg-blue-500 rounded-full p-3 text-white text-xl">🔧</div>
+                            <div>
+                                <p class="text-xs font-black text-blue-800 uppercase">Rev. Garantía</p>
+                                <p class="text-blue-600 text-xs font-medium">Revisiones en garantía</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-amber-300 rounded-2xl p-4">
+                        <div class="flex items-center gap-3">
+                            <div class="bg-amber-500 rounded-full p-3 text-white text-xl">📅</div>
+                            <div>
+                                <p class="text-xs font-black text-amber-800 uppercase">Disponibilidad</p>
+                                <p class="text-amber-600 text-xs font-medium">Días de cobertura (L-V)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tabla de Viáticos -->
+                <div class="table-container bg-white rounded-2xl shadow-xl overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-sm">
+                            <thead class="table-header">
+                                <tr>
+                                    <th class="px-6 py-4 text-left font-black">Población</th>
+                                    <th class="px-4 py-4 text-center font-black">KM</th>
+                                    <th class="px-4 py-4 text-center font-black">Instalación</th>
+                                    <th class="px-4 py-4 text-center font-black">Rev. Garantía</th>
+                                    <th class="px-3 py-4 text-center font-black">L</th>
+                                    <th class="px-3 py-4 text-center font-black">M</th>
+                                    <th class="px-3 py-4 text-center font-black">M</th>
+                                    <th class="px-3 py-4 text-center font-black">J</th>
+                                    <th class="px-3 py-4 text-center font-black">V</th>
+                                </tr>
+                            </thead>
+                            <tbody id="viaticos-body" class="divide-y divide-slate-100">
+                                <!-- Se llenará con JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- Nota informativa -->
+                <div class="mt-6 bg-gradient-to-r from-purple-50 to-pink-50 border-2 border-purple-300 rounded-2xl p-6">
+                    <div class="flex items-start gap-4">
+                        <div class="text-4xl">ℹ️</div>
+                        <div>
+                            <h3 class="font-black text-purple-900 text-base mb-2">Notas Importantes:</h3>
+                            <ul class="space-y-2 text-sm text-purple-800">
+                                <li class="flex items-start gap-2">
+                                    <span class="font-bold mt-0.5">•</span>
+                                    <span>Los valores mostrados son los <b>pagos que recibirás</b> por desplazamiento</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="font-bold mt-0.5">•</span>
+                                    <span><b>"COORDINAR CON ASC"</b> significa que debes confirmar disponibilidad antes de aceptar el servicio</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="font-bold mt-0.5">•</span>
+                                    <span>Las <b>X verdes</b> indican los días en que hay cobertura regular para esa zona</span>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -206,25 +803,249 @@
 
     </main>
 
+    <!-- Footer -->
+    <footer class="mt-16 glass-effect py-8">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p class="text-sm font-bold text-slate-700 mb-2">
+                © 2026 Electro Service S.A.
+            </p>
+            <p class="text-xs text-slate-500">
+                Estatuto Oficial de Tarifas para Técnicos
+            </p>
+        </div>
+    </footer>
+
     <script>
+        // Datos de viáticos
+        const viaticosData = [
+            {p:"SIBERIA", k:38, i:25000, rg:25000, d:["","X","","X",""]},
+            {p:"LA CALERA", k:56, i:35000, rg:35000, d:["X","","","","X"]},
+            {p:"SIBATÉ", k:58, i:30000, rg:30000, d:["","","","X",""]},
+            {p:"MOSQUERA", k:58, i:30000, rg:30000, d:["X","X","X","X","X"]},
+            {p:"GUAYMARAL", k:62, i:30000, rg:30000, d:["","","","",""]},
+            {p:"ARRAYANES", k:62, i:30000, rg:30000, d:["","","X","","X"]},
+            {p:"FUNZA", k:62, i:30000, rg:30000, d:["X","X","X","X","X"]},
+            {p:"MADRID", k:68, i:30000, rg:30000, d:["X","X","X","X","X"]},
+            {p:"COTA", k:70, i:30000, rg:30000, d:["X","","X","","X"]},
+            {p:"CHIPAQUE", k:70, i:35000, rg:35000, d:"COORD"},
+            {p:"CHÍA", k:74, i:30000, rg:30000, d:["X","X","X","X","X"]},
+            {p:"EL ROSAL", k:78, i:40000, rg:40000, d:["","X","","X",""]},
+            {p:"TENJO", k:82, i:40000, rg:40000, d:["","X","","X",""]},
+            {p:"BOJACÁ", k:84, i:40000, rg:40000, d:["X","","X","","X"]},
+            {p:"CAJICÁ", k:86, i:40000, rg:40000, d:["X","X","X","X","X"]},
+            {p:"TABIO", k:88, i:45000, rg:45000, d:["","X","","X",""]},
+            {p:"SAN ANTONIO TEQUENDAMA", k:88, i:45000, rg:45000, d:["","","","X",""]},
+            {p:"GRANADA CUNDI", k:88, i:50000, rg:50000, d:["","","","X",""]},
+            {p:"BRICEÑO", k:92, i:45000, rg:45000, d:["X","","","","X"]},
+            {p:"FACATATIVÁ", k:92, i:40000, rg:40000, d:["X","X","X","X","X"]},
+            {p:"SUBACHOQUE", k:96, i:45000, rg:45000, d:["","X","","",""]},
+            {p:"CHOACHÍ", k:98, i:58000, rg:58000, d:"COORD"},
+            {p:"CÁQUEZA", k:104, i:62000, rg:62000, d:"COORD"},
+            {p:"TOCANCIPÁ", k:105, i:50000, rg:50000, d:["X","X","X","X","X"]},
+            {p:"ZIPACÓN", k:105, i:50000, rg:50000, d:["","","","X",""]},
+            {p:"SOPÓ", k:108, i:55000, rg:55000, d:["X","","","","X"]},
+            {p:"ZIPAQUIRÁ", k:110, i:50000, rg:50000, d:["X","X","X","X","X"]},
+            {p:"SUBIA", k:110, i:50000, rg:50000, d:["","","","X",""]},
+            {p:"UNE", k:114, i:65000, rg:65000, d:"COORD"},
+            {p:"GACHANCIPÁ", k:116, i:60000, rg:60000, d:["","X","","X",""]},
+            {p:"SAN FRANCISCO", k:118, i:60000, rg:60000, d:["","X","","",""]},
+            {p:"UBAQUE", k:122, i:70000, rg:70000, d:"COORD"},
+            {p:"TENA", k:122, i:60000, rg:60000, d:["","","","X",""]},
+            {p:"SILVANIA", k:122, i:50000, rg:50000, d:["X","X","X","X","X"]},
+            {p:"GUASCA", k:124, i:70000, rg:90000, d:["X","","","","X"]},
+            {p:"COGUA", k:125, i:70000, rg:90000, d:"COORD"},
+            {p:"EL COLEGIO", k:128, i:70000, rg:90000, d:["","","","X",""]},
+            {p:"FÓMEQUE", k:134, i:70000, rg:90000, d:"COORD"},
+            {p:"LA MESA", k:134, i:70000, rg:90000, d:["","","","X",""]},
+            {p:"ALBÁN", k:134, i:70000, rg:90000, d:["","","","X",""]},
+            {p:"QUETAME", k:140, i:70000, rg:90000, d:"COORD"},
+            {p:"LA VEGA", k:144, i:70000, rg:90000, d:["","X","","",""]},
+            {p:"GUAYABAL SÍQUIMA", k:144, i:70000, rg:90000, d:["","X","","",""]},
+            {p:"NEMOCÓN", k:145, i:70000, rg:90000, d:"COORD"},
+            {p:"FOSCA", k:148, i:70000, rg:90000, d:"COORD"},
+            {p:"CACHIPAY", k:148, i:70000, rg:90000, d:["","","","X",""]},
+            {p:"GUATAVITA", k:150, i:70000, rg:90000, d:["X","","","","X"]},
+            {p:"SUESCA", k:152, i:70000, rg:90000, d:["","X","","X",""]},
+            {p:"FUSAGASUGÁ", k:152, i:50000, rg:50000, d:["X","X","X","X","X"]},
+            {p:"ANOLAIMA", k:154, i:70000, rg:90000, d:["","X","","",""]},
+            {p:"BITUIMA", k:162, i:70000, rg:90000, d:"COORD"},
+            {p:"SESQUILÉ", k:144, i:70000, rg:90000, d:["","X","","X",""]},
+            {p:"GUTIÉRREZ", k:170, i:70000, rg:260000, d:"COORD"},
+            {p:"GUAYABETAL", k:170, i:70000, rg:260000, d:["","","","",""]},
+            {p:"NOCAIMA", k:170, i:70000, rg:100000, d:["","X","","",""]},
+            {p:"CHINAUTA", k:175, i:50000, rg:70000, d:["X","X","X","X","X"]},
+            {p:"MACHETÁ", k:175, i:70000, rg:150000, d:"COORD"},
+            {p:"CHOCONTÁ", k:175, i:70000, rg:130000, d:"COORD"},
+            {p:"TAUSA", k:175, i:70000, rg:150000, d:"COORD"},
+            {p:"VIOTÁ", k:176, i:70000, rg:110000, d:["","","","X",""]},
+            {p:"PASCA", k:176, i:70000, rg:110000, d:["X","X","X","X","X"]},
+            {p:"VIANÍ", k:180, i:70000, rg:140000, d:"COORD"},
+            {p:"TIBACUY", k:180, i:50000, rg:80000, d:["","X","","","X"]},
+            {p:"SASAIMA", k:182, i:70000, rg:110000, d:["","X","","",""]},
+            {p:"QUIPILE", k:185, i:70000, rg:110000, d:"COORD"},
+            {p:"PACHO", k:186, i:70000, rg:190000, d:"COORD"},
+            {p:"MANTA", k:190, i:70000, rg:190000, d:"COORD"},
+            {p:"CUCUNUBÁ", k:190, i:70000, rg:190000, d:"COORD"},
+            {p:"SUPATÁ", k:194, i:70000, rg:110000, d:["","X","","",""]},
+            {p:"ARBELÁEZ", k:194, i:50000, rg:70000, d:["","X","","",""]},
+            {p:"VILLAPINZÓN", k:195, i:70000, rg:120000, d:"COORD"},
+            {p:"SUTATAUSA", k:195, i:70000, rg:120000, d:"COORD"},
+            {p:"GACHETÁ", k:200, i:70000, rg:260000, d:"COORD"},
+            {p:"VILLETA", k:204, i:70000, rg:120000, d:["","X","","",""]},
+            {p:"UBATÉ", k:205, i:70000, rg:120000, d:"COORD"},
+            {p:"NIMAIMA", k:210, i:70000, rg:120000, d:["","X","","",""]},
+            {p:"VERGARA", k:210, i:70000, rg:120000, d:["","X","","",""]},
+            {p:"SAN JUAN RIOSECO", k:210, i:70000, rg:260000, d:"COORD"},
+            {p:"TOBÍA", k:215, i:70000, rg:120000, d:["","X","","",""]},
+            {p:"QUEBRADANEGRA", k:215, i:70000, rg:220000, d:"COORD"},
+            {p:"FÚQUENE", k:215, i:70000, rg:220000, d:"COORD"},
+            {p:"GAMA", k:225, i:70000, rg:240000, d:"COORD"},
+            {p:"SAN BERNARDO", k:230, i:50000, rg:90000, d:["","X","","",""]},
+            {p:"LENGUAZAQUE", k:235, i:70000, rg:140000, d:"COORD"},
+            {p:"VILLAGÓMEZ", k:240, i:70000, rg:200000, d:"COORD"},
+            {p:"GUATEQUE", k:240, i:70000, rg:200000, d:"COORD"},
+            {p:"CHAGUANÍ", k:245, i:70000, rg:200000, d:"COORD"},
+            {p:"GUACHETÁ", k:245, i:70000, rg:200000, d:"COORD"},
+            {p:"SUSA", k:245, i:70000, rg:150000, d:"COORD"},
+            {p:"ÚTICA", k:246, i:70000, rg:150000, d:["","X","","",""]},
+            {p:"SIMIJACA", k:255, i:70000, rg:150000, d:"COORD"},
+            {p:"GUADUAS", k:258, i:70000, rg:150000, d:["","X","","",""]},
+            {p:"VENTAQUEMADA", k:260, i:0, rg:0, d:"COORD"},
+            {p:"UBALÁ", k:280, i:70000, rg:230000, d:"COORD"},
+            {p:"LA PALMA", k:290, i:70000, rg:230000, d:"COORD"},
+            {p:"GACHALÁ", k:305, i:70000, rg:250000, d:"COORD"},
+            {p:"CHIQUINQUIRÁ", k:315, i:70000, rg:220000, d:"COORD"},
+            {p:"GARAGOA", k:320, i:70000, rg:250000, d:"COORD"},
+            {p:"TUNJA", k:335, i:0, rg:0, d:"COORD"},
+            {p:"SUTAMARCHÁN", k:365, i:0, rg:80000, d:"COORD"},
+            {p:"VILLA DE LEYVA", k:380, i:0, rg:100000, d:"COORD"},
+            {p:"PAIPA", k:420, i:0, rg:0, d:"COORD"},
+            {p:"DUITAMA", k:450, i:0, rg:0, d:"COORD"},
+            {p:"SOGAMOSO", k:480, i:0, rg:0, d:"COORD"},
+            {p:"PANDI", k:224, i:50000, rg:80000, d:"COORD"},
+            {p:"TIBASOSA", k:401, i:0, rg:0, d:"COORD"},
+            {p:"NOBSA", k:414, i:0, rg:0, d:"COORD"},
+            {p:"CÓMBITA", k:138, i:0, rg:0, d:"COORD"},
+            {p:"TUTA", k:330, i:0, rg:0, d:"COORD"},
+            {p:"CORRALES", k:448, i:0, rg:0, d:"COORD"},
+            {p:"MONGUÍ", k:444, i:0, rg:0, d:"COORD"},
+            {p:"RÁQUIRA", k:334, i:0, rg:0, d:"COORD"},
+            {p:"RAMIRIQUÍ", k:302, i:0, rg:0, d:"COORD"},
+            {p:"PAUNA", k:350, i:70000, rg:240000, d:"COORD"}
+        ];
+
+        // Ordenar alfabéticamente
+        viaticosData.sort((a, b) => a.p.localeCompare(b.p));
+
+        const formatMoney = (val) => {
+            if (val === 0) return "$ 0";
+            return new Intl.NumberFormat('es-CO', { 
+                style: 'currency', 
+                currency: 'COP', 
+                maximumFractionDigits: 0 
+            }).format(val);
+        };
+
+        function renderViaticos(list) {
+            const body = document.getElementById('viaticos-body');
+            if (!body) return;
+            
+            body.innerHTML = "";
+            
+            if (list.length === 0) {
+                body.innerHTML = `
+                    <tr>
+                        <td colspan="9" class="p-8 text-center text-slate-400">
+                            No se encontraron resultados
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+            
+            list.forEach(item => {
+                const tr = document.createElement('tr');
+                tr.className = "table-row-hover";
+                
+                let daysHtml = "";
+                if (item.d === "COORD") {
+                    daysHtml = `<td colspan="5" class="p-4 text-center font-black bg-amber-50 text-amber-800 text-xs uppercase tracking-wider">Coordinar con ASC</td>`;
+                } else {
+                    daysHtml = item.d.map(dia => {
+                        const val = (dia.toLowerCase() === "x") ? `<span class="inline-block bg-green-500 text-white font-black text-xs px-2.5 py-1 rounded-md">X</span>` : "";
+                        return `<td class="px-3 py-3 text-center">${val}</td>`;
+                    }).join('');
+                }
+                
+                tr.innerHTML = `
+                    <td class="px-6 py-4 font-bold text-slate-800">${item.p}</td>
+                    <td class="px-4 py-4 text-center text-slate-500 font-medium">${item.k} KM</td>
+                    <td class="px-4 py-4 text-center font-black text-green-600">${formatMoney(item.i)}</td>
+                    <td class="px-4 py-4 text-center font-black text-blue-600">${formatMoney(item.rg)}</td>
+                    ${daysHtml}
+                `;
+                
+                body.appendChild(tr);
+            });
+        }
+
+        function filterViaticos() {
+            const query = document.getElementById('searchViaticos').value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+            const filtered = viaticosData.filter(item => 
+                item.p.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(query)
+            );
+            renderViaticos(filtered);
+        }
+
         function switchTab(tab) {
             const tabGarantias = document.getElementById('tab-garantias');
             const tabOow = document.getElementById('tab-oow');
+            const tabViaticos = document.getElementById('tab-viaticos');
             const btnGarantias = document.getElementById('btn-garantias');
             const btnOow = document.getElementById('btn-oow');
+            const btnViaticos = document.getElementById('btn-viaticos');
+
+            // Ocultar todos
+            tabGarantias.classList.add('hidden');
+            tabOow.classList.add('hidden');
+            tabViaticos.classList.add('hidden');
+            
+            // Desactivar todos los botones
+            btnGarantias.classList.remove('tab-active');
+            btnGarantias.classList.add('tab-inactive');
+            btnOow.classList.remove('tab-active');
+            btnOow.classList.add('tab-inactive');
+            btnViaticos.classList.remove('tab-active');
+            btnViaticos.classList.add('tab-inactive');
 
             if (tab === 'garantias') {
-                tabGarantias.classList.remove('hidden'); tabOow.classList.add('hidden');
-                btnGarantias.classList.add('tab-active'); btnGarantias.classList.remove('text-slate-400');
-                btnOow.classList.remove('tab-active'); btnOow.classList.add('text-slate-400');
-            } else {
-                tabOow.classList.remove('hidden'); tabGarantias.classList.add('hidden');
-                btnOow.classList.add('tab-active'); btnOow.classList.remove('text-slate-400');
-                btnGarantias.classList.remove('tab-active'); btnGarantias.classList.add('text-slate-400');
+                tabGarantias.classList.remove('hidden');
+                btnGarantias.classList.add('tab-active');
+                btnGarantias.classList.remove('tab-inactive');
+            } else if (tab === 'oow') {
+                tabOow.classList.remove('hidden');
+                btnOow.classList.add('tab-active');
+                btnOow.classList.remove('tab-inactive');
+            } else if (tab === 'viaticos') {
+                tabViaticos.classList.remove('hidden');
+                btnViaticos.classList.add('tab-active');
+                btnViaticos.classList.remove('tab-inactive');
+                // Renderizar viáticos cuando se abre la pestaña
+                renderViaticos(viaticosData);
             }
+            
+            // Scroll suave al inicio
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
+        
+        // Animación de entrada
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                document.body.style.transition = 'opacity 0.5s ease';
+                document.body.style.opacity = '1';
+            }, 100);
+        });
     </script>
 </body>
 </html>
-
-
